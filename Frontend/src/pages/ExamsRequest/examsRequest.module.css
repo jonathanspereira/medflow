@@ -1,0 +1,257 @@
+.containerMain{
+  display: flex;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100dvh;
+  gap: 2rem;
+}
+
+.container > h1 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 0;
+}
+
+.container a {
+  width: 15rem;
+}
+
+.containerOpcoes{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 3rem;
+}
+
+.filters{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+input {
+  width: 20rem;
+  height: 3rem;
+  border: 1px solid #f2f2f2;
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+select {
+  width: 20rem;
+  height: 3rem;
+  border: 1px solid #f2f2f2;
+  border-radius: 8px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+
+
+
+.table {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5rem;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+thead tr {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--primary-color); 
+
+}
+
+thead th {
+  text-align: center;
+  color: #fff!important;
+  padding: 0.9rem 0;
+  margin: 0;
+}
+
+
+tbody{
+  display: block;
+  overflow: auto;
+  max-height: 50vh;
+}
+
+tbody tr {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #f2f2f2;
+  padding: 0;
+  margin: 0;
+}
+
+td > p{
+  border-radius: 16px;
+  padding: 7px;
+  background-color: #41b349;
+  color: #fff;
+  font-weight: bold;
+  margin: 0;
+}
+
+td, th {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 12rem;
+  padding: 0.7rem 0;
+  margin: 0;
+}
+
+th {
+  font-size: 10px!important;
+}
+
+td{
+  font-size: 10px!important;
+}
+
+.id {
+  width: 5rem;
+}
+.soli {
+  width: 12rem;
+
+}
+.convenio {
+  width: 7rem;
+
+}
+.exame {
+  width: 20rem;
+
+}
+.pct {
+  width: 20rem;
+
+}
+.data {
+  width: 8rem;
+
+}
+.status {
+  width: 8rem;
+}
+.obs {
+  width: 20rem;
+}
+.acoes {
+  width: 8rem;
+  gap: 0.5rem;
+
+}
+
+.acoes > button {
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+tr img{
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  background-color: #fff!important;
+}
+
+button {
+  background-color: var(--white-color);
+}
+
+
+
+
+/*
+<div className={styles.container}>
+    
+    <Header title="Solicitações de Exames" />
+
+    <div className={styles.containerOpcoes}>
+      <BtnPrimary>Nova Solicitação</BtnPrimary>
+
+        <div className={styles.filters}>
+        <input
+          type="text"
+          placeholder="Buscar por nome ou protocolo"
+          style={{cursor: "text" }}
+          value={searchTerm}
+          onChange={handleSearch}
+        />
+        <input
+          type="date"
+          style={{cursor: "pointer" }}
+          onChange={(e) => {
+          // Implementar lógica de filtro por data
+          }
+          
+        }
+        />
+        <select 
+          onChange={(e) => {
+          // Implementar lógica de filtro por convênio
+          }}
+
+        >
+          <option value="">Todos os Convênios</option>
+          <option value="unimed">Unimed</option>
+          <option value="amil">Amil</option>
+          <option value="bradesco">Bradesco</option>
+          { Adicione mais opções conforme necessário }
+        </select>
+        </div>
+    </div>
+    
+    <table className={styles.table}>
+      <thead>
+      <tr>
+        <th className={styles.id}>Prontuário</th>
+        <th className={styles.soli}>Solicitante</th>
+        <th className={styles.convenio}>Convênio</th>
+        <th className={styles.exame}>Exame</th>
+        <th className={styles.pct}>Paciente</th>
+        <th className={styles.data}>Data de Envio</th>
+        <th className={styles.status}>Status</th>
+        <th className={styles.obs}>Observação</th>
+        <th className={styles.acoes}>Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td className={styles.id}>99999</td>
+        <td className={styles.soli}>Ronald Fonseca Cavalcanti</td>
+        <td className={styles.convenio}>Sul America</td>
+        <td className={styles.exame}>OCT - Tomografia de coerencia opitica</td>
+        <td className={styles.pct}>Fulano de Tal da silva Pereira Sampaio</td>
+        <td className={styles.data}>01/01/2021</td>
+        <td className={styles.status}><p>Autorizado</p></td>
+        <td className={styles.obs}>Justificativa: Não se enquadra pelo Rol da ANS (diagnostico de catarata)</td>
+        <td className={styles.acoes}>
+        <button title='Anexos'>
+          <img src="../../../src/assets/svg/anexo.svg" alt="" />
+        </button>
+        <button title='Editar'>
+          <img src="../../../src/assets/svg/editar.svg" alt="" />
+        </button>
+        <button title='Excluir'>
+          <img src="../../../src/assets/svg/excluir.svg" alt="" />
+        </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+*/

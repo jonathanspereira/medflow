@@ -1,6 +1,9 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
+import HomePage from './pages/HomePage/homePage';
+import ExamsRequest from './pages/ExamsRequest/examsRequest';
+
 import './App.css';
 
 function App() {
@@ -9,8 +12,10 @@ function App() {
   useEffect(() => {
     const setTitle = (path) => {
       switch (path) {
-        case '/login':
+        case '/':
           document.title = 'MedFlow | Login';
+        case '/solicitacao-de-exames':
+          document.title = 'MedFlow | Solicitações de Exames';
           break;
         default:
           document.title = 'MedFlow | Gestão de Solicitações';
@@ -24,7 +29,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/solicitacao-de-exames" element={<ExamsRequest />} />
     </Routes>
   );
 }

@@ -1,0 +1,21 @@
+.btn{
+    display: flex;
+    justify-content: center;
+    background: rgb(3,34,67);background: linear-gradient(79deg, rgba(3,34,67,1) 0%, rgba(0,86,179,1) 84%);    color: var(--white-color);
+    padding: 0.5rem;
+    width: 10rem;
+    margin: 0;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn:active {
+    transform: perspective(1px) scale(0.95);
+}
