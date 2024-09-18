@@ -22,7 +22,7 @@ const SideBar = () => {
 		{name: "Sair", link: "/login", icon: IoLogOutOutline,margin:true}
 	];
 
-	const [open, setOpen] = useState(true);
+	const [open, setOpen] = useState(false);
 	
 	return(
 		<section>
@@ -47,7 +47,7 @@ const SideBar = () => {
 						>
 							<div>{React.createElement(menu.icon, {size: "20"})}</div>
 							<h2 
-								className={`whitespace-pre duration-300 ${!open && `opacity-0 translate-x-28 overflow-hidden`} group-hover:transition-none`}>
+								className={`whitespace-pre duration-200 ${!open && `opacity-0 translate-x-28 overflow-hidden`} group-hover:transition-none`}>
 								{menu.name}
 							</h2>
 							<h2 className={`${open && "hidden"} absolute left-25 bg-[#0056b3] font-bold whitespace-pre text-white rounded-md drop-shadow-1g px-0 py-0  

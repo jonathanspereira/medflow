@@ -1,11 +1,14 @@
 .containerMain{
   display: flex;
+  background-color: #f2f2f2;
+  
 }
 
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100vw;
   height: 100dvh;
   gap: 2rem;
 }

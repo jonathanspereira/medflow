@@ -4,17 +4,11 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 import Header from '../../components/header';
 import SideBar from '../../components/sidebar';
-import BtnPrimary from '../../components/Buttons/ButtonPrimary/buttonPrimary';
+import Table from '../../components/table';
 
 import styles from './examsRequest.module.css';
 
 export default function ExamsRequest() {
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
-    // Implementar lógica de busca por nome ou protocolo
-  };
 
   return (
 
@@ -22,7 +16,16 @@ export default function ExamsRequest() {
 
       <SideBar />
 
-      <Header title={"Solicitações de Exames"} />
+      <div className={styles.container}>
+        <Header title={"Solicitações de Exames"} />
+        
+
+        <Table  />
+      </div>
+
+      
+
+
      
     </section>
   );
