@@ -8,6 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface ConvenioRepository extends JpaRepository<Convenio, Long> {
-    // Encontrar convention pelo código (consulta customizada)
-    Optional<Convenio> findByCodigoConvenio(String codigoConvenio);
+    // Encontrar convention pelo Id (consulta customizada)
+    Optional<Convenio> findByid(Long id);
 }

@@ -1,1 +1,5 @@
-/home/jonathan/Documentos/projetos/medflow/medflow-backend/src/main/java/com/medflow/MedFlowApplication.java
+/home/jonathan/Documentos/projetos/medflow/Backend/src/main/java/com/medflow/repository/ConvenioRepository.java
+/home/jonathan/Documentos/projetos/medflow/Backend/src/main/java/com/medflow/service/ConvenioService.java
+/home/jonathan/Documentos/projetos/medflow/Backend/src/main/java/com/medflow/MedFlowApplication.java
+/home/jonathan/Documentos/projetos/medflow/Backend/src/main/java/com/medflow/controller/ConvenioController.java
+/home/jonathan/Documentos/projetos/medflow/Backend/src/main/java/com/medflow/model/Convenio.java
