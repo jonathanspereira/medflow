@@ -1,5 +1,5 @@
+com/medflow/controller/ConvenioController.class
+com/medflow/repository/ConvenioRepository.class
 com/medflow/MedFlowApplication.class
 com/medflow/model/Convenio.class
-com/medflow/controller/ConvenioController.class
 com/medflow/service/ConvenioService.class
-com/medflow/repository/ConvenioRepository.class

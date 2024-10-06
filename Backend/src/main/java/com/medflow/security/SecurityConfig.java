@@ -1,4 +1,4 @@
-package com.medflow.config;
+package com.medflow.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
