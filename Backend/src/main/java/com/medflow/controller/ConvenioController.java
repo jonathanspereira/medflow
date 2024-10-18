@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/agreements")
+@RequestMapping("/api/convenios")
 public class ConvenioController {
 
     @Autowired

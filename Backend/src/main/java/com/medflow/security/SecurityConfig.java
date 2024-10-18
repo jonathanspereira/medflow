@@ -11,13 +11,15 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf().disable()  // Desabilitar CSRF temporariamente para facilitar os testes com POST
-                .authorizeHttpRequests()
-                .requestMatchers("/api/agreements/**").permitAll()  // Permitir acesso público a todos os endpoints relacionados a convenios
-                .requestMatchers("/api/users/**").permitAll()  // Permitir acesso público a todos os endpoints relacionados a usuarios
-                .anyRequest().authenticated()  // Exigir autenticação para outros endpoints
-                .and()
-                .httpBasic();  // Autenticação básica
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/api/convenios/**").permitAll()  // Permitir acesso público a todos os endpoints relacionados a convenios
+                        .requestMatchers("/api/usuarios/**").permitAll()  // Permitir acesso público a todos os endpoints relacionados a usuarios
+                        .requestMatchers("/api/profissionais/**").permitAll()  // Permitir acesso público a todos os endpoints relacionados a profissionais
+                        .requestMatchers("/api/pacientes/**").permitAll()  // Permitir acesso público a todos os endpoints relacionados a pacientes
+                        .requestMatchers("/api/solicitacoes/**").permitAll()  // Permitir acesso público a todos os endpoints relacionados a solicitacao
+                        .anyRequest().authenticated()  // Exigir autenticação para outros endpoints
+                )
+                .httpBasic(customizer -> {});  // Autenticação básica
 
         return http.build();
     }
