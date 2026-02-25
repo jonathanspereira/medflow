@@ -1,0 +1,90 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum PlanTier {
+  ESSENTIAL
+  PROFESSIONAL
+  ULTIMATE
+}
+
+enum ExamRequestStatus {
+  PENDING
+  ANALYZING
+  AUTHORIZED
+  REJECTED
+}
+
+enum DeliveryStatus {
+  SENT
+  DELIVERED
+  READ
+}
+
+model Organization {
+  id                        String      @id @default(cuid())
+  name                      String
+  slug                      String      @unique
+  currentPlan               PlanTier    @default(ESSENTIAL)
+  monthlyAuthorizationLimit Int?
+  createdAt                 DateTime    @default(now())
+  updatedAt                 DateTime    @updatedAt
+  examRequests              ExamRequest[]
+  templates                 Template[]
+  users                     User[]
+}
+
+model User {
+  id             String       @id @default(cuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  name           String
+  email          String       @unique
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  examRequests   ExamRequest[]
+
+  @@index([organizationId])
+}
+
+model Template {
+  id             String       @id @default(cuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  name           String
+  message        String
+  isDefault      Boolean      @default(false)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@index([organizationId])
+}
+
+model ExamRequest {
+  id                 String            @id @default(cuid())
+  organizationId     String
+  organization       Organization      @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  patientName        String
+  patientPhone       String
+  requestingPhysician String
+  requestDate        DateTime
+  requestData        Json
+  agreement          Boolean           @default(false)
+  protocol           String            @unique
+  createdById        String
+  createdBy          User              @relation(fields: [createdById], references: [id], onDelete: Restrict)
+  status             ExamRequestStatus @default(PENDING)
+  deliveryStatus     DeliveryStatus?
+  wahaMessageId      String?
+  authorizedAt       DateTime?
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+
+  @@index([organizationId, status, createdAt])
+  @@index([organizationId, deliveryStatus])
+}
