@@ -3,11 +3,19 @@ import { NextRequest, NextResponse } from "next/server";
 const WEBHOOK_PREFIX = "/api/webhooks/";
 const SESSION_COOKIE_ORG = "medauth_org_id";
 const SESSION_COOKIE_USER = "medauth_user_id";
+const PUBLIC_PATHS = ["/login", "/esqueceu-senha", "/unauthorized"];
+const AUTH_PROTECTION_PAUSED = true;
 
 export function middleware(request: NextRequest) {
+  if (AUTH_PROTECTION_PAUSED) {
+    return NextResponse.next();
+  }
+
   const { pathname } = request.nextUrl;
 
-  if (pathname.startsWith(WEBHOOK_PREFIX) || pathname === "/unauthorized") {
+  const isPublicPath = PUBLIC_PATHS.includes(pathname);
+
+  if (pathname.startsWith(WEBHOOK_PREFIX) || isPublicPath) {
     return NextResponse.next();
   }
 
@@ -19,7 +27,7 @@ export function middleware(request: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    return NextResponse.redirect(new URL("/unauthorized", request.url));
+    return NextResponse.redirect(new URL("/login", request.url));
   }
 
   const headers = new Headers(request.headers);

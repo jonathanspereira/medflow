@@ -12,6 +12,7 @@ const VALID_STATUSES: ExamRequestStatus[] = [
   "ANALYZING",
   "AUTHORIZED",
   "REJECTED",
+  "CANCELLED",
 ];
 
 type ExamStatusInput = (typeof VALID_STATUSES)[number];
@@ -155,5 +156,24 @@ export async function updateExamRequestStatusAction(
   });
 
   revalidatePath("/");
+  return { success: true };
+}
+
+export async function deleteExamRequestAction(examRequestId: string) {
+  const session = await requireSession();
+
+  const deleted = await prisma.examRequest.deleteMany({
+    where: {
+      id: examRequestId,
+      organizationId: session.organizationId,
+    },
+  });
+
+  if (!deleted.count) {
+    throw new Error("Solicitação não encontrada para exclusão.");
+  }
+
+  revalidatePath("/");
+  revalidatePath("/solicitacoes");
   return { success: true };
 }

@@ -18,6 +18,7 @@ enum ExamRequestStatus {
   ANALYZING
   AUTHORIZED
   REJECTED
+  CANCELLED
 }
 
 enum DeliveryStatus {
